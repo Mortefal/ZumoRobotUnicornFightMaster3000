@@ -21,21 +21,26 @@ void setup() {
   pinMode(trigPin,OUTPUT);
   pinMode(echoPin,INPUT);
   myservo.attach(6); //Servo pin
+  
   reflectanceSensors.init();
   button.waitForButton();
+ 
+}
 
-  // Code for the ultrasoundsensor
+void loop() {
+  // put your main code here, to run repeatedly:
+ 
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
+
+  long duration, distance;
   
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
+  Serial.println(distance + "cm");
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration/2) / 29.1;
 }
 void servoloop(){
   for (pos = 0; pos <= 180; pos +=1){
