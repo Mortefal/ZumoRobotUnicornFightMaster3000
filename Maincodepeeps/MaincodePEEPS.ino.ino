@@ -11,11 +11,23 @@ ZumoReflectanceSensorArray reflectanceSensors;
 ZumoMotors motors;
 Pushbutton button(ZUMO_BUTTON);
 
+const int trigPin = 0;
+const int echoPin = 1;
+
 
 void setup() {
+  pinMode(trigPin,OUTPUT);
+  pinMode(echoPin,INPUT);
   
   reflectanceSensors.init();
   button.waitForButton();
+
+  // Code for the ultrasoundsensor
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
   
 }
 
